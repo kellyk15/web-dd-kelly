@@ -1,21 +1,50 @@
 html{
-    color-scheme: dark light;
-	--color-text:#F9F7F1;
-	--color-background:#1B1919;
+    /* color-scheme: dark light; 
+	--color-text: dark-light(#F9F7F1, #1B1919);
+	--color-background:dark-light(#1B1919, #F9F7F1);
 	--color-accent: #1ED760;
+    --color-background-secondary: dark-light(#EDEDED, #151515);
+    --color-gray:#808080;
+    --color-hover:dark-light(#312e2e, #daaec3); */
     
-    @media (prefers-color-scheme: light) {
+    color-scheme: light dark; 
+	--color-text: light-dark(#1B1919, #F9F7F1 );
+	--color-background:light-dark(#F9F7F1,#1B1919);
+	--color-accent: #1ED760;
+    --color-background-secondary: light-dark(#EDEDED, #151515);
+    --color-gray:#808080;
+    --color-hover:light-dark(#e9d0dc, #312e2e);
+    --color-gradient: linear-gradient(180deg,rgba(224, 171, 180, 1) 0%, rgba(209, 123, 142, 0.32) 31%, rgba(255, 255, 255, 1) 95%);
+
+    @media (prefers-color-scheme: dark) {
+        --color-gradient: linear-gradient(180deg,rgba(224, 171, 180, 0.7) 0%, rgba(209, 123, 142, 0.7) 27%, rgba(21, 21, 21, 0.7) 71%);
+    }
+    
+    /* @media (prefers-color-scheme: light) {
         --color-text:#1B1919;
 	    --color-background:#F9F7F1;
 	    --color-accent: #1ED760;
-    }
+        --color-background-secondary: #EDEDED;
+    } */
 
     /* background-color: var(--color-background); */
-    background-color: #151515;
+    /* background-color: #151515; */
+    background-color: var(--color-background-secondary);
     /* font-family: 'crimson text', serif; */
 
     font-family: 'Montserrat', sans-serif;
 }
+
+    /* @media (prefers-color-scheme: dark) {
+    :root {
+        --color-gradient: linear-gradient(
+            180deg,
+            rgba(224, 171, 180, 0.7) 0%,
+            rgba(209, 123, 142, 0.7) 27%,
+            rgba(21, 21, 21, 0.7) 71%
+        );
+    }
+} */
 
 body {
     font-size: 85%;
@@ -95,7 +124,8 @@ section{
 }
 
 .albums li:hover{
-    background-color: #312e2e;
+    background-color: var(--color-hover);
+    transition-duration: 0.5s;
 }
 
 .albums li div{
@@ -114,7 +144,7 @@ section{
 }
 
 .albums li div p:nth-of-type(2){
-    color: gray;
+    color: var(--color-gray);
 }
 
 .albums ul {
@@ -134,7 +164,13 @@ section{
 
     /* background: linear-gradient(180deg,rgba(245, 211, 225, 1) 0%, rgba(237, 166, 197, 1) 22%, rgba(115, 85, 98, 1) 49%, rgba(21, 21, 21, 1) 85%); */
 
-    background: linear-gradient(180deg,rgba(224, 171, 180, 0.7) 0%, rgba(209, 123, 142, 0.7) 27%, rgba(21, 21, 21, 0.7) 71%);
+    /* background: linear-gradient(180deg,rgba(224, 171, 180, 0.7) 0%, rgba(209, 123, 142, 0.7) 27%, rgba(21, 21, 21, 0.7) 71%); */
+
+    /* background: light-dark (linear-gradient(180deg,rgba(224, 171, 180, 1) 0%, rgba(209, 123, 142, 0.32) 31%, rgba(255, 255, 255, 1) 95%), linear-gradient(180deg,rgba(224, 171, 180, 0.7) 0%, rgba(209, 123, 142, 0.7) 27%, rgba(21, 21, 21, 0.7) 71%)); */
+    
+    /* background: linear-gradient(180deg,rgba(224, 171, 180, 1) 0%, rgba(209, 123, 142, 0.32) 31%, rgba(255, 255, 255, 1) 95%); */
+
+    background: var(--color-gradient);
     display: flex;
     flex-direction: column;
     gap: 4em;
@@ -222,7 +258,9 @@ section{
 }
 
 .verlijkbare-items div:hover{
-    background-color: #312e2e;
+    background-color: var(--color-hover);
+    transition-duration: 0.5s;
+    cursor: pointer;
 }
 
 
@@ -236,8 +274,18 @@ section{
 
 .scroller{
     max-width: 100%;
-    outline: 3px solid #1ED760;
-    overflow: hidden;
+    /* outline: 3px solid #1ED760; */
+    /* overflow: hidden; */
+    animation: scrolling 10s linear infinite;
+}
+
+@keyframes scrolling {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
 }
 
 .populair{
@@ -272,7 +320,7 @@ section{
 }
 
 .populair-items p{
-    color: rgb(210, 202, 202);
+    color: var(--color-text);
 }
 
 .populair-items div{
@@ -299,7 +347,7 @@ section{
     right: 0;
     bottom: 0;
     height: 8vh;
-    background-color: #151515;
+    background-color: var(--color-background-secondary);
 
     /* border: 1px solid var(--color-accent); */
 }
@@ -378,7 +426,7 @@ section{
 }
 
 .fans div:first-child p{
-    color: grey;
+    color: var(--color-gray);
     cursor: pointer;
     transition-duration: 0.5s;
     font-weight: bold;
@@ -401,7 +449,7 @@ section{
 }
 
 .artist-card:hover{
-    background-color: #312e2e;
+    background-color: var(--color-hover);
     transition-duration: 0.5s;
     cursor: pointer;
 }
@@ -417,7 +465,7 @@ section{
 }
 
 .artist-card p:nth-of-type(2){
-    color: gray;
+    color: var(--color-gray);
 }
 
 .artist-card img{
@@ -466,4 +514,8 @@ background: linear-gradient(180deg,rgba(224, 171, 180, 0) 0%, rgba(209, 123, 142
     display: flex;
     flex-direction: column;
     gap: 0.2em;
+}
+
+.about-me-container{
+    color: #F9F7F1;
 }
