@@ -91,3 +91,36 @@ function pauseMusic(){
 
     muziek.pause()
 }
+
+
+// api ophalen
+
+let base = "https://fdnd.directus.app/items"
+let endpoint = "/person?filter[squads][squad_id][tribe][name]=CMD%20Minor%20Web%20Dev&filter[squads][squad_id][cohort]=2526&sort=name&filter[fav_tag][_nempty] "
+let url = base + endpoint
+
+let deLijst = document.querySelector("ul")
+
+getMinorMensen();
+
+async function getMinorMensen(){
+    let response = await fetch(url);
+        
+    let responseJSON = await response.json();
+    let deMinormensen = responseJSON.data
+    console.log(deMinormensen)
+
+    
+    deMinormensen.forEach(eenMinormens => {
+        console.log(eenMinormens)
+
+        // let minormensHTML = 
+        // `<li>
+        //     <h2>${eenMinormens.name}</h2>
+        //     <p>${eenMinormens.fav_tag}</p>
+        //     <img src="${eenMinormens.avatar}" alt="avatar van ${eenMinormens.name}">
+        // </li>`
+
+        // deLijst.insertAdjacentHTML("beforeend", minormensHTML)
+    })
+}
