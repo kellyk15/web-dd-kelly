@@ -93,22 +93,6 @@ img,svg {
     grid-row: 1/2;
 }
 
-@media (max-width: 475px){
-    .container {
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-    }
-
-    .rounded-corners:nth-of-type(2){
-        grid-column: 1/4;
-        grid-row: 1/2;
-        z-index: 10;
-    }
-}
-
-
-
 
 header{
     width: 100vw;
@@ -550,4 +534,103 @@ background: linear-gradient(180deg,rgba(224, 171, 180, 0) 0%, rgba(209, 123, 142
 
 .about-me-container{
     color: #F9F7F1;
+}
+
+@media (max-width: 475px){
+    .container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 1em;
+    }
+
+    section{
+        height: 100vh;
+    }
+
+    .rounded-corners:nth-of-type(1){
+        grid-column: 1/2;
+        grid-row: 3/4;
+    }
+
+    .rounded-corners:nth-of-type(2){
+        grid-column: 1/2;
+        grid-row: 1/2;
+        z-index: 10;
+
+        & .header{
+            flex-direction: column;
+            align-items: center;
+
+            & div{
+                align-self: start;
+                & p:nth-of-type(1),
+                & p:nth-of-type(3){
+                    font-size: 0.8em;
+                }
+
+                & p:nth-of-type(2){
+                    font-size: 2em;
+                }
+            }
+        }
+
+        & .songs{
+            gap: 2em;
+        }
+
+        & .populair-items{
+            justify-content: flex-start;
+
+            & svg{
+                margin-left: auto;
+            }
+
+            & p:last-child{
+                margin-left: 0.5em;
+            }
+
+            & p:nth-child(2){
+                display: none;
+            }
+        }
+
+        .about-me-container{
+            height: 18em;
+            padding: 1em;
+
+            & p{
+                font-size: 0.8em;
+            }
+        }
+
+        .cards-div{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .rounded-corners:nth-of-type(3),
+    .rounded-corners:nth-of-type(4){
+        grid-column: 1/2;
+        grid-row: 2/3;
+        z-index: 10;
+    }
+
+    .player-bottom{
+        z-index: 100;
+    }
+
+    .player-buttons,
+    .slidecontainer,
+    .buttons svg:nth-of-type(1),
+    .buttons svg:nth-of-type(2),
+    .buttons svg:nth-of-type(4),
+    .buttons svg:nth-of-type(5),
+    .buttons svg:nth-of-type(6){
+        display: none;
+    }
+
+    .song-slider{
+        align-items: self-end;
+    }
 }
