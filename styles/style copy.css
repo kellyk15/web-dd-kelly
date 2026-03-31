@@ -243,6 +243,10 @@ section{
     gap: 1em;
 }
 
+.close{
+    display: none;
+}
+
 .cover{
     max-width: 100%;
 }
@@ -610,10 +614,17 @@ background: linear-gradient(180deg,rgba(224, 171, 180, 0) 0%, rgba(209, 123, 142
     }
 
     .rounded-corners:nth-of-type(3),
-    .rounded-corners:nth-of-type(4){
+    .rounded-corners:nth-of-type(4),
+    .rounded-corners:nth-of-type(5){
         grid-column: 1/2;
-        grid-row: 2/3;
+        grid-row: 1/2;
         z-index: 10;
+    }
+    
+    .close{
+        display: block;
+        margin-left: auto;
+        width: 5vh;
     }
 
     .player-bottom{

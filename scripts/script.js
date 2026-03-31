@@ -47,6 +47,28 @@ function changePlayerThree(){
     playerTwo.classList.add('hidden');
 }
 
+var closeOne = document.querySelector(".rounded-corners:nth-of-type(3) .close");
+var closeTwo = document.querySelector(".rounded-corners:nth-of-type(4) .close");
+var closeThree = document.querySelector(".rounded-corners:nth-of-type(5) .close");
+
+closeOne.addEventListener('click', closePlayerOne);
+closeTwo.addEventListener('click', closePlayerTwo);
+closeThree.addEventListener('click', closePlayerThree);
+
+function closePlayerOne(){
+    console.log("clicked");
+    playerOne.classList.add('hidden');
+}
+
+function closePlayerTwo(){
+    console.log("clicked");
+    playerTwo.classList.add('hidden');
+}
+
+function closePlayerThree(){
+    console.log("clicked");
+    playerThree.classList.add('hidden');
+}
 
 // function changePlayer(){
 //     console.log("clicked");
