@@ -123,26 +123,87 @@ let url = base + endpoint
 
 let deLijst = document.querySelector("ul")
 
+// getMinorMensen();
+
+// async function getMinorMensen() {
+//     let response = await fetch(url);
+//     let responseJSON = await response.json();
+//     let deMinormensen = responseJSON.data;
+
+//     let cardsDiv = document.querySelector(".cards-div");
+//     cardsDiv.innerHTML = "";
+
+//     deMinormensen
+//         .filter(persoon => persoon.avatar)
+//         .forEach(persoon => {
+//             let cardHTML = `
+//             <article class="artist-card">
+//                 <img src="${persoon.avatar}" alt="foto van ${persoon.name}">
+//                 <div>
+//                     <p>${persoon.name}</p>
+//                 </div>
+//             </article>`;
+
+//             cardsDiv.insertAdjacentHTML("beforeend", cardHTML);
+//         });
+// }
+
+
 getMinorMensen();
 
-async function getMinorMensen(){
+async function getMinorMensen() {
     let response = await fetch(url);
-        
     let responseJSON = await response.json();
-    let deMinormensen = responseJSON.data
-    console.log(deMinormensen)
+    let deMinormensen = responseJSON.data;
 
-    
-    deMinormensen.forEach(eenMinormens => {
-        console.log(eenMinormens)
+    let cardsDiv = document.querySelector(".cards-div");
+    let allesWeergeven = document.querySelector(".fans div:first-child p");
 
-        // let minormensHTML = 
-        // `<li>
-        //     <h2>${eenMinormens.name}</h2>
-        //     <p>${eenMinormens.fav_tag}</p>
-        //     <img src="${eenMinormens.avatar}" alt="avatar van ${eenMinormens.name}">
-        // </li>`
+    const gefilterd = deMinormensen.filter(persoon => 
+        persoon.avatar && !persoon.avatar.match(/github\.com\/[^\/]+$/)
+    );
 
-        // deLijst.insertAdjacentHTML("beforeend", minormensHTML)
-    })
+    function renderKaarten(toonAlles) {
+        cardsDiv.innerHTML = "";
+        const teTonenPersonen = toonAlles ? gefilterd : gefilterd.slice(0, 4);
+
+        teTonenPersonen.forEach(persoon => {
+            let cardHTML = `
+            <article class="artist-card">
+                <img src="${persoon.avatar}" alt="foto van ${persoon.name}">
+                <div>
+                    <p>${persoon.name}</p>
+                </div>
+            </article>`;
+            cardsDiv.insertAdjacentHTML("beforeend", cardHTML);
+        });
+
+        allesWeergeven.textContent = toonAlles ? "Minder weergeven" : "Alles weergeven";
+    }
+
+    renderKaarten(false);
+
+    let allesZichtbaar = false;
+    allesWeergeven.addEventListener("click", () => {
+        allesZichtbaar = !allesZichtbaar;
+        renderKaarten(allesZichtbaar);
+    });
 }
+
+// claude https://claude.ai/chat/f6fc1d82-5bcb-46ed-be68-ef7d31d1a6c0
+const mediaQuery = window.matchMedia('(max-width: 475px)');
+const div = document.querySelector('.rounded-corners:nth-of-type(3)');
+
+function handleMediaChange(e) {
+    if (e.matches) {
+        div.classList.add('hidden');
+    } else {
+        div.classList.remove('hidden');
+    }
+}
+
+// Check bij laden
+handleMediaChange(mediaQuery);
+
+// Luister naar veranderingen
+mediaQuery.addEventListener('change', handleMediaChange);
