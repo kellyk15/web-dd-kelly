@@ -382,6 +382,7 @@ section{
 
 .song img{
     max-height: 6vh;
+    border-radius: 6px;
 }
 
 .song p:nth-of-type(1){

@@ -96,7 +96,8 @@ var pauseButton = document.querySelector(".buttons svg:nth-of-type(4)");
 
 playButton.addEventListener('click', playMusic);
 pauseButton.addEventListener('click', pauseMusic);
-let muziek = new Audio("ripples.mp3");
+// let muziek = new Audio("ripples.mp3");
+let muziek = new Audio("ophelia.mp3");
 
 function playMusic(){
     console.log("play");
