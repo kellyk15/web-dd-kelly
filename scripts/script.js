@@ -207,3 +207,25 @@ handleMediaChange(mediaQuery);
 
 // Luister naar veranderingen
 mediaQuery.addEventListener('change', handleMediaChange);
+
+
+// mobile tab tussen songs en albums
+
+const songsTab = document.querySelector('nav ul li:nth-of-type(1) a');
+const albumsTab = document.querySelector('nav ul li:nth-of-type(2) a');
+
+const songsSection = document.querySelector('.rounded-corners:nth-of-type(2)');
+const albumsSection = document.querySelector('.rounded-corners:nth-of-type(1)');
+
+songsTab.addEventListener('click', changeToSongs);
+albumsTab.addEventListener('click', changeToAlbums);
+
+function changeToSongs(){
+    songsSection.classList.remove('hidden');
+    albumsSection.classList.add('hidden');
+}
+
+function changeToAlbums(){
+    albumsSection.classList.remove('hidden');
+    songsSection.classList.add('hidden');
+}
