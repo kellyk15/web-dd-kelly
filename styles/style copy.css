@@ -639,7 +639,7 @@ header{
         z-index: 100;
         bottom: 11vh;
         background-color: rgb(140 41 105 / 0.8);
-        border-radius: 12px;
+        border-radius: 6px;
         width: 85%;
         left: 50%;
         transform: translateX(-50%);
@@ -651,7 +651,6 @@ header{
     .slidecontainer,
     .buttons svg:nth-of-type(1),
     .buttons svg:nth-of-type(2),
-    .buttons svg:nth-of-type(4),
     .buttons svg:nth-of-type(5),
     .buttons svg:nth-of-type(6){
         display: none;
