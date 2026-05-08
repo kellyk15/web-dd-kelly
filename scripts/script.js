@@ -160,6 +160,7 @@ async function getMinorMensen() {
     let cardsDiv = document.querySelector(".cards-div");
     let allesWeergeven = document.querySelector(".fans div:first-child p");
 
+    // aan claude gevraagd om te filteren op mensen zonder avatar 
     const gefilterd = deMinormensen.filter(persoon => 
         persoon.avatar && !persoon.avatar.match(/github\.com\/[^\/]+$/)
     );
@@ -184,8 +185,10 @@ async function getMinorMensen() {
 
     renderKaarten(false);
 
+    // de toggle functionaliteit voor alles weergeven / minder weergeven
     let allesZichtbaar = false;
     allesWeergeven.addEventListener("click", () => {
+        // true/false omdraaien
         allesZichtbaar = !allesZichtbaar;
         renderKaarten(allesZichtbaar);
     });
@@ -211,7 +214,6 @@ mediaQuery.addEventListener('change', handleMediaChange);
 
 
 // mobile tab tussen songs en albums
-
 const songsTab = document.querySelector('nav ul li:nth-of-type(1) a');
 const albumsTab = document.querySelector('nav ul li:nth-of-type(2) a');
 
@@ -221,6 +223,9 @@ const albumsSection = document.querySelector('.rounded-corners:nth-of-type(1)');
 songsTab.addEventListener('click', changeToSongs);
 albumsTab.addEventListener('click', changeToAlbums);
 
+if (window.innerWidth < 475) {
+    albumsSection.classList.add('hidden');
+}
 function changeToSongs(){
     songsSection.classList.remove('hidden');
     albumsSection.classList.add('hidden');
